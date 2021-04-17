@@ -10,8 +10,6 @@ namespace ZodiacService.DataAccess
 
         public static List<Tuple<Zodiac, Zodiac, string>> GetAllZodiacs()
         {
-            //var zodiacs = new List<Zodiac>();
-
             var zodiacs = new List<Tuple<Zodiac, Zodiac, string>>();
 
             try
@@ -32,10 +30,6 @@ namespace ZodiacService.DataAccess
             catch (Exception e)
             {
                 Console.WriteLine("Exception: " + e.Message);
-            }
-            finally
-            {
-                Console.WriteLine("Executing finally block.");
             }
 
             return zodiacs;

@@ -1,6 +1,5 @@
 ﻿using Grpc.Net.Client;
 using System;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -17,11 +16,14 @@ namespace ZodiacClient
 
             while (!cancellationToken.IsCancellationRequested)
             {
-                Console.Write("Date: ");
+                string date = default;
 
-                var date = Console.ReadLine();
+                do
+                {
+                    Console.Write("Enter Date: ");
+                    date = Console.ReadLine();
 
-                if (!ValidateDate(date)) { return; }
+                } while (!ValidateDate(date));
 
                 var zodiacToBeAdded = new Zodiac()
                 { Date = date != null && date.Trim().Length > 0 ? date : "Invalid Date" };
@@ -30,7 +32,7 @@ namespace ZodiacClient
                 switch (response.Status)
                 {
                     case AddZodiacResponse.Types.Status.Success:
-                        Console.WriteLine($"\nResponse Status: {response.Status}\n\nSign: {response.Sign}\n");
+                        Console.WriteLine($"\nResponse Status: {response.Status}\n\nSign: {response.Sign}\n\n");
                         break;
                     case AddZodiacResponse.Types.Status.Error:
                         Console.WriteLine($"\nResponse Status: {response.Status}\n\nInvalid Date!");
@@ -44,24 +46,32 @@ namespace ZodiacClient
 
         public static bool ValidateDate(string date)
         {
-            var month = int.Parse(date.Substring(0, 2));
-            var day = int.Parse(date.Substring(3, 2));
-            var year = int.Parse(date.Substring(6, 4));
-
             try
             {
-                var dateTime = new DateTime(year, month, day);
+                var dateString = date.Split("/");
+
+                var dateTime = new DateTime(
+                    int.Parse(dateString[2]),
+                    int.Parse(dateString[0]),
+                    int.Parse(dateString[1]));
             }
             catch (ArgumentOutOfRangeException)
             {
-                Console.WriteLine("Invalid Date - Does Not Exist!");
+                Console.WriteLine("Invalid Date - Does Not Exist!\n");
+                return false;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                Console.WriteLine("Invalid Date!\n");
+                return false;
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid Date!\n");
                 return false;
             }
 
-            var regex = new Regex("([0-9]{2})/([0-9]{2})/([0-9]{4})");
-            var match = regex.Match(date);
-
-            return match.Success;
+            return true;
         }
     }
 }

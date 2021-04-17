@@ -28,46 +28,27 @@ namespace ZodiacService.Services
                 { Status = AddZodiacResponse.Types.Status.Error, Sign = "Invalid Sign" });
             }
 
-            Console.WriteLine($"\nSign: ");
+            Console.Write($"\nSign: ");
 
-            string sign = default;
-
-            var thisYear = int.Parse(zodiac.Date.Substring(6, 4));
-            var thisMonth = int.Parse(zodiac.Date.Substring(0, 2));
-            var thisDay = int.Parse(zodiac.Date.Substring(3, 2));
+            var date = zodiac.Date.Split("/");
+            var thisYear = int.Parse(date[2]);
+            var thisMonth = int.Parse(date[0]);
+            var thisDay = int.Parse(date[1]);
 
             var dateTime = new DateTime(thisYear, thisMonth, thisDay);
 
-            switch (dateTime)
+            var sign = dateTime switch
             {
-                case { } when
-                    (dateTime >= new DateTime(1000, 3, 1) &&
-                     dateTime <= new DateTime(3000, 5, 31)):
-                    {
-                        sign = SpringService.GetSign(zodiac);
-                        break;
-                    }
-                case { } when
-                    (dateTime >= new DateTime(1000, 6, 1) &&
-                     dateTime <= new DateTime(3000, 8, 31)):
-                    {
-                        sign = SummerService.GetSign(zodiac);
-                        break;
-                    }
-                case { } when
-                    (dateTime >= new DateTime(1000, 9, 1) &&
-                     dateTime <= new DateTime(3000, 11, 30)):
-                    {
-                        sign = AutumnService.GetSign(zodiac);
-                        break;
-                    }
+                { } when (dateTime >= new DateTime(1000, 3, 1) && dateTime <= new DateTime(3000, 5, 31)) =>
+                    SpringService.GetSign(zodiac),
+                { } when (dateTime >= new DateTime(1000, 6, 1) && dateTime <= new DateTime(3000, 8, 31)) =>
+                    SummerService.GetSign(zodiac),
+                { } when (dateTime >= new DateTime(1000, 9, 1) && dateTime <= new DateTime(3000, 11, 30)) =>
+                    AutumnService.GetSign(zodiac),
+                _ => WinterService.GetSign(zodiac)
+            };
 
-                default:
-                    {
-                        sign = WinterService.GetSign(zodiac);
-                        break;
-                    }
-            }
+            Console.Write($"{sign}\n\n");
 
             return Task.FromResult(new AddZodiacResponse()
             {

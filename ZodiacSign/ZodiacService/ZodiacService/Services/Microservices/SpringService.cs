@@ -16,9 +16,11 @@ namespace ZodiacService.Services.Microservices
                     let endMonth = int.Parse(variable.Item2.Date.Substring(0, 2))
                     let endDay = int.Parse(variable.Item2.Date.Substring(3, 2))
 
-                    let thisMonth = int.Parse(zodiac.Date.Substring(0, 2))
-                    let thisDay = int.Parse(zodiac.Date.Substring(3, 2))
+                    let date = zodiac.Date.Split("/")
+                    let thisMonth = int.Parse(date[0])
+                    let thisDay = int.Parse(date[1])
 
+                    //where startMonth >= 3 && startMonth <= 5 && endMonth >= 3 && endMonth <= 5
                     where thisMonth == startMonth && thisDay >= startDay || thisMonth == endMonth && thisDay <= endDay
                     select variable.Item3).FirstOrDefault();
         }
