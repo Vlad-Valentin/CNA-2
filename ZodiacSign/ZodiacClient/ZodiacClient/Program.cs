@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Grpc.Net.Client;
+using System;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Google.Protobuf.WellKnownTypes;
-using Grpc.Net.Client;
-using ZodiacClient;
 
 namespace ZodiacClient
 {
@@ -14,9 +12,6 @@ namespace ZodiacClient
         {
             using var channel = GrpcChannel.ForAddress("https://localhost:5001");
             var client = new Horoscope.HoroscopeClient(channel);
-
-            //var responseGetAll = await client.GetAllZodiacsAsync(new Empty());
-            //Console.WriteLine("Intervals from server: " + responseGetAll);
 
             var cancellationToken = new CancellationTokenSource(Timeout.Infinite);
 
