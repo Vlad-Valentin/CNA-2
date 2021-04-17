@@ -2,8 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "ZodiacService";
 
-import "google/protobuf/empty.proto";  
-import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
 
 package zodiac;
 

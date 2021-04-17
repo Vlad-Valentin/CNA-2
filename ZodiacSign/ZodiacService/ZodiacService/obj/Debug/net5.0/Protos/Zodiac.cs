@@ -25,19 +25,18 @@ namespace ZodiacService {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChNQcm90b3Mvem9kaWFjLnByb3RvEgZ6b2RpYWMaG2dvb2dsZS9wcm90b2J1",
-            "Zi9lbXB0eS5wcm90bxofZ29vZ2xlL3Byb3RvYnVmL3RpbWVzdGFtcC5wcm90",
-            "byIyChBBZGRab2RpYWNSZXF1ZXN0Eh4KBnpvZGlhYxgBIAEoCzIOLnpvZGlh",
-            "Yy5ab2RpYWMidQoRQWRkWm9kaWFjUmVzcG9uc2USMAoGc3RhdHVzGAEgASgO",
-            "MiAuem9kaWFjLkFkZFpvZGlhY1Jlc3BvbnNlLlN0YXR1cxIMCgRzaWduGAIg",
-            "ASgJIiAKBlN0YXR1cxILCgdTVUNDRVNTEAASCQoFRVJST1IQASI4ChVHZXRB",
-            "bGxab2RpYWNzUmVzcG9uc2USHwoHem9kaWFjcxgBIAMoCzIOLnpvZGlhYy5a",
-            "b2RpYWMiFgoGWm9kaWFjEgwKBGRhdGUYASABKAkylQEKCUhvcm9zY29wZRJA",
-            "CglBZGRab2RpYWMSGC56b2RpYWMuQWRkWm9kaWFjUmVxdWVzdBoZLnpvZGlh",
-            "Yy5BZGRab2RpYWNSZXNwb25zZRJGCg1HZXRBbGxab2RpYWNzEhYuZ29vZ2xl",
-            "LnByb3RvYnVmLkVtcHR5Gh0uem9kaWFjLkdldEFsbFpvZGlhY3NSZXNwb25z",
-            "ZUIQqgINWm9kaWFjU2VydmljZWIGcHJvdG8z"));
+            "Zi9lbXB0eS5wcm90byIyChBBZGRab2RpYWNSZXF1ZXN0Eh4KBnpvZGlhYxgB",
+            "IAEoCzIOLnpvZGlhYy5ab2RpYWMidQoRQWRkWm9kaWFjUmVzcG9uc2USMAoG",
+            "c3RhdHVzGAEgASgOMiAuem9kaWFjLkFkZFpvZGlhY1Jlc3BvbnNlLlN0YXR1",
+            "cxIMCgRzaWduGAIgASgJIiAKBlN0YXR1cxILCgdTVUNDRVNTEAASCQoFRVJS",
+            "T1IQASI4ChVHZXRBbGxab2RpYWNzUmVzcG9uc2USHwoHem9kaWFjcxgBIAMo",
+            "CzIOLnpvZGlhYy5ab2RpYWMiFgoGWm9kaWFjEgwKBGRhdGUYASABKAkylQEK",
+            "CUhvcm9zY29wZRJACglBZGRab2RpYWMSGC56b2RpYWMuQWRkWm9kaWFjUmVx",
+            "dWVzdBoZLnpvZGlhYy5BZGRab2RpYWNSZXNwb25zZRJGCg1HZXRBbGxab2Rp",
+            "YWNzEhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5Gh0uem9kaWFjLkdldEFsbFpv",
+            "ZGlhY3NSZXNwb25zZUIQqgINWm9kaWFjU2VydmljZWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::ZodiacService.AddZodiacRequest), global::ZodiacService.AddZodiacRequest.Parser, new[]{ "Zodiac" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZodiacService.AddZodiacResponse), global::ZodiacService.AddZodiacResponse.Parser, new[]{ "Status", "Sign" }, null, new[]{ typeof(global::ZodiacService.AddZodiacResponse.Types.Status) }, null, null),
@@ -781,10 +780,6 @@ namespace ZodiacService {
     }
     #endif
 
-      public object this[int index]
-      {
-          get { throw new System.NotImplementedException(); }
-      }
   }
 
   #endregion

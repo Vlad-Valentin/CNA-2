@@ -1,4 +1,3 @@
 obj\Debug\net5.0\Protos/Zodiac.cs \
 obj\Debug\net5.0\Protos/ZodiacGrpc.cs: C:/Users/Valentin/.nuget/packages/grpc.tools/2.36.1/build/native/include/google/protobuf/empty.proto\
- C:/Users/Valentin/.nuget/packages/grpc.tools/2.36.1/build/native/include/google/protobuf/timestamp.proto\
  Protos/zodiac.proto

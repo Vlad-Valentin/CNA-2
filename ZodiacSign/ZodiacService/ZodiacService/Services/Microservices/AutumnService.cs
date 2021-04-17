@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using ZodiacService.DataAccess;
 
 namespace ZodiacService.Services.Microservices
