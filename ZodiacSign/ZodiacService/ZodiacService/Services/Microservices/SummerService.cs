@@ -1,28 +1,22 @@
-﻿using System.Linq;
+﻿using Grpc.Core;
+using System.Threading.Tasks;
 using ZodiacService.DataAccess;
 
-namespace ZodiacService.Services.Microservices
+namespace ZodiacService.Services.MicroServices
 {
-    public class SummerService
+    public class SummerService : SummerSeason.SummerSeasonBase
     {
-        public static string GetSign(Zodiac zodiac)
+        private const string FilePath = "./Resources/summerSigns.txt";
+
+        public override Task<AddSummerResponse> AddSummer(AddSummerRequest request, ServerCallContext context)
         {
-            var zodiacs = ZodiacOperations.GetAllZodiacs();
+            var sign = ZodiacOperations.GetSign(request.SummerDate, FilePath);
 
-            return (from variable in zodiacs
-
-                    let startMonth = int.Parse(variable.Item1.Date.Substring(0, 2))
-                    let startDay = int.Parse(variable.Item1.Date.Substring(3, 2))
-                    let endMonth = int.Parse(variable.Item2.Date.Substring(0, 2))
-                    let endDay = int.Parse(variable.Item2.Date.Substring(3, 2))
-
-                    let date = zodiac.Date.Split("/")
-                    let thisMonth = int.Parse(date[0])
-                    let thisDay = int.Parse(date[1])
-
-                    //where startMonth >= 6 && startMonth <= 8 && endMonth >= 6 && endMonth <= 8
-                    where thisMonth == startMonth && thisDay >= startDay || thisMonth == endMonth && thisDay <= endDay
-                    select variable.Item3).FirstOrDefault();
+            return Task.FromResult(new AddSummerResponse
+            {
+                Status = AddSummerResponse.Types.Status.Success,
+                Sign = sign
+            });
         }
     }
 }

@@ -83,6 +83,68 @@ namespace ZodiacService {
 
     }
 
+    /// <summary>Client for Horoscope</summary>
+    public partial class HoroscopeClient : grpc::ClientBase<HoroscopeClient>
+    {
+      /// <summary>Creates a new client for Horoscope</summary>
+      /// <param name="channel">The channel to use to make remote calls.</param>
+      public HoroscopeClient(grpc::ChannelBase channel) : base(channel)
+      {
+      }
+      /// <summary>Creates a new client for Horoscope that uses a custom <c>CallInvoker</c>.</summary>
+      /// <param name="callInvoker">The callInvoker to use to make remote calls.</param>
+      public HoroscopeClient(grpc::CallInvoker callInvoker) : base(callInvoker)
+      {
+      }
+      /// <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
+      protected HoroscopeClient() : base()
+      {
+      }
+      /// <summary>Protected constructor to allow creation of configured clients.</summary>
+      /// <param name="configuration">The client configuration.</param>
+      protected HoroscopeClient(ClientBaseConfiguration configuration) : base(configuration)
+      {
+      }
+
+      public virtual global::ZodiacService.AddZodiacResponse AddZodiac(global::ZodiacService.AddZodiacRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return AddZodiac(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::ZodiacService.AddZodiacResponse AddZodiac(global::ZodiacService.AddZodiacRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_AddZodiac, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::ZodiacService.AddZodiacResponse> AddZodiacAsync(global::ZodiacService.AddZodiacRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return AddZodiacAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::ZodiacService.AddZodiacResponse> AddZodiacAsync(global::ZodiacService.AddZodiacRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_AddZodiac, null, options, request);
+      }
+      public virtual global::ZodiacService.GetAllZodiacsResponse GetAllZodiacs(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAllZodiacs(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::ZodiacService.GetAllZodiacsResponse GetAllZodiacs(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetAllZodiacs, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::ZodiacService.GetAllZodiacsResponse> GetAllZodiacsAsync(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAllZodiacsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::ZodiacService.GetAllZodiacsResponse> GetAllZodiacsAsync(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetAllZodiacs, null, options, request);
+      }
+      /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
+      protected override HoroscopeClient NewInstance(ClientBaseConfiguration configuration)
+      {
+        return new HoroscopeClient(configuration);
+      }
+    }
+
     /// <summary>Creates service definition that can be registered with a server</summary>
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
     public static grpc::ServerServiceDefinition BindService(HoroscopeBase serviceImpl)

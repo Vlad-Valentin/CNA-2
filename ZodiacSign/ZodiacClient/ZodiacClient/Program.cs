@@ -16,7 +16,7 @@ namespace ZodiacClient
 
             while (!cancellationToken.IsCancellationRequested)
             {
-                string date = default;
+                string date;
 
                 do
                 {

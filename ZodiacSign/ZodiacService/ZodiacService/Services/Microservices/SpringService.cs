@@ -1,28 +1,22 @@
-﻿using System.Linq;
+﻿using Grpc.Core;
+using System.Threading.Tasks;
 using ZodiacService.DataAccess;
 
-namespace ZodiacService.Services.Microservices
+namespace ZodiacService.Services.MicroServices
 {
-    public class SpringService
+    public class SpringService : SpringSeason.SpringSeasonBase
     {
-        public static string GetSign(Zodiac zodiac)
+        private const string FilePath = "./Resources/springSigns.txt";
+
+        public override Task<AddSpringResponse> AddSpring(AddSpringRequest request, ServerCallContext context)
         {
-            var zodiacs = ZodiacOperations.GetAllZodiacs();
+            var sign = ZodiacOperations.GetSign(request.SpringDate, FilePath);
 
-            return (from variable in zodiacs
-
-                    let startMonth = int.Parse(variable.Item1.Date.Substring(0, 2))
-                    let startDay = int.Parse(variable.Item1.Date.Substring(3, 2))
-                    let endMonth = int.Parse(variable.Item2.Date.Substring(0, 2))
-                    let endDay = int.Parse(variable.Item2.Date.Substring(3, 2))
-
-                    let date = zodiac.Date.Split("/")
-                    let thisMonth = int.Parse(date[0])
-                    let thisDay = int.Parse(date[1])
-
-                    //where startMonth >= 3 && startMonth <= 5 && endMonth >= 3 && endMonth <= 5
-                    where thisMonth == startMonth && thisDay >= startDay || thisMonth == endMonth && thisDay <= endDay
-                    select variable.Item3).FirstOrDefault();
+            return Task.FromResult(new AddSpringResponse
+            {
+                Status = AddSpringResponse.Types.Status.Success,
+                Sign = sign
+            });
         }
     }
 }

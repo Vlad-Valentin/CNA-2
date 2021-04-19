@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "ZodiacService";
+
+package autumn;
+
+service AutumnSeason{
+	rpc AddAutumn(AddAutumnRequest) returns (AddAutumnResponse);
+}
+
+message AddAutumnRequest{
+	string autumnDate = 1;
+}
+
+message AddAutumnResponse{
+	Status status = 1;
+	string sign = 2;
+
+	enum Status{
+		SUCCESS = 0;
+		ERROR = 1;
+	}
+}

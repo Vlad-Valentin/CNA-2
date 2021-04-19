@@ -1,8 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Protos\Seasons\spring.proto" />
+    <None Remove="Protos\Seasons\summer.proto" />
+    <None Remove="Protos\Seasons\winter.proto" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.15.8" />
@@ -11,7 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\zodiac.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\Seasons\winter.proto" GrpcServices="Both" />
+    <Protobuf Include="Protos\Seasons\spring.proto" GrpcServices="Both" />
+    <Protobuf Include="Protos\Seasons\summer.proto" GrpcServices="Both" />
+    <Protobuf Include="Protos\zodiac.proto" GrpcServices="Both" />
+    <Protobuf Include="Protos\Seasons\autumn.proto" GrpcServices="Both" />
   </ItemGroup>
 
 </Project>

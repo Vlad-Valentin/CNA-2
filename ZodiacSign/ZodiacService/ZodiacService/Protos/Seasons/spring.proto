@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "ZodiacService";
+
+package spring;
+
+service SpringSeason{
+	rpc AddSpring(AddSpringRequest) returns (AddSpringResponse);
+}
+
+message AddSpringRequest{
+	string springDate = 1;
+}
+
+message AddSpringResponse{
+	Status status = 1;
+	string sign = 2;
+
+	enum Status{
+		SUCCESS = 0;
+		ERROR = 1;
+	}
+}
