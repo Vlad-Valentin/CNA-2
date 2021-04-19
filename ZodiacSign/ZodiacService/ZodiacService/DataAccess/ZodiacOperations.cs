@@ -7,8 +7,6 @@ namespace ZodiacService.DataAccess
 {
     public class ZodiacOperations
     {
-        //private const string FilePath = "./Resources/signs.txt";
-
         public static List<Tuple<Zodiac, Zodiac, string>> GetAllZodiacs(string filePath)
         {
             var zodiacs = new List<Tuple<Zodiac, Zodiac, string>>();

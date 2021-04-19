@@ -46,6 +46,12 @@ namespace ZodiacClient
 
         public static bool ValidateDate(string date)
         {
+            if (date.Length != 8 && date.Length != 10)
+            {
+                Console.WriteLine("Invalid Date!\n");
+                return false;
+            }
+
             try
             {
                 var dateString = date.Split("/");

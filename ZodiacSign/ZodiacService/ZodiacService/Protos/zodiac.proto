@@ -2,13 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "ZodiacService";
 
-import "google/protobuf/empty.proto";
-
 package zodiac;
 
 service Horoscope{
 	rpc AddZodiac(AddZodiacRequest) returns (AddZodiacResponse);
-	rpc GetAllZodiacs(google.protobuf.Empty) returns (GetAllZodiacsResponse);
 }
 
 message AddZodiacRequest{

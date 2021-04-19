@@ -1,6 +1,5 @@
 using Grpc.Core;
 using Grpc.Net.Client;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
@@ -8,12 +7,6 @@ namespace ZodiacService.Services
 {
     public class ZodiacService : Horoscope.HoroscopeBase
     {
-        private readonly ILogger<ZodiacService> _logger;
-        public ZodiacService(ILogger<ZodiacService> logger)
-        {
-            _logger = logger;
-        }
-
         public override Task<AddZodiacResponse> AddZodiac(AddZodiacRequest request, ServerCallContext context)
         {
             var zodiac = request.Zodiac;
@@ -57,7 +50,7 @@ namespace ZodiacService.Services
                     var winterResponse = winterClient.AddWinter(new AddWinterRequest() { WinterDate = zodiac.Date });
                     sign = winterResponse.Sign;
                     break;
-            };
+            }
 
             Console.WriteLine($"\nSign: {sign}\n");
 
