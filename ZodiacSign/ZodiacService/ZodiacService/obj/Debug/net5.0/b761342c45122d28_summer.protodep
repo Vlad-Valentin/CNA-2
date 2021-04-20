@@ -1,0 +1,2 @@
+obj\Debug\net5.0\Protos\Seasons/Summer.cs \
+obj\Debug\net5.0\Protos\Seasons/SummerGrpc.cs: Protos/Seasons/summer.proto
